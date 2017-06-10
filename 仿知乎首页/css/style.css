@@ -1,0 +1,800 @@
+/*
+* @Author: HuangXinxin
+* @Date:   2017-01-20 09:32:05
+* @Last Modified by:   HuangXinxin
+* @Last Modified time: 2017-02-01 12:19:50
+*/
+
+/*全局样式*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,input,p,a,span{
+	margin:0;
+	padding: 0;
+	font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+a{
+	text-decoration: none;
+}
+ul li{
+	list-style: none;
+}
+.clearfix:after{
+	content: "";
+	height: 0;
+	display: block;
+	visibility: hidden;
+	clear: both;
+}
+body{
+	overflow-x: hidden;
+}
+.container{
+	width: 960px;
+	margin: 0 auto;
+}
+
+/*头部样式*/
+header{
+	position: fixed;
+	top: 0;
+	z-index: 99;
+	width: 100%;
+	min-width: 960px;
+	height: 46px;
+	/*background:-webkit-linear-gradient(top,#086ed5,#055db5);*/
+	background: linear-gradient(to bottom,#086ed5,#055db5);
+	box-shadow: 0 1px 2px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.15);
+}
+header .logo{
+	display: inline-block;
+	width: 61px;
+	height: 30px;
+	padding-top: 8px;
+	background: url(../images/logo-zhihu.png) no-repeat 0 8px;
+}
+header form{
+	position: relative;
+	display: inline-block;
+	width: 360px;
+	height: 30px;
+	margin-left: 12px;
+}
+header form input{
+	position: absolute;
+	top: 0;
+	/*box-sizing: border-box;*/
+	width: 265px;
+	height: 14px;
+	padding: 7px 50px 7px 10px;
+	border: 1px solid #045bb2;
+	background: rgb(225,234,242);
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	outline: 0;
+}
+header form button{
+	position: absolute;
+	top: 0;
+	right: 0;
+	box-sizing: border-box;
+	width: 35px;
+	height: 30px;
+	border: 1px solid #045bb2;
+	background-color: rgb(13,118,225);
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+	outline: 0;
+	cursor: pointer;
+}
+header form button span{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	background: url(../images/search.png) no-repeat -82px 0;
+}
+header .nav{
+	position: relative;
+	display: inline-block;
+	margin-left: 15px;
+	line-height: normal;
+	vertical-align: top;
+}
+header .nav li{
+	float: left;
+}
+header .nav li a{
+	display: block;
+	padding: 0 12px;
+	color: #fff;
+	font-size: 14px;
+	line-height: 46px;
+}
+header .nav .current{
+	background: linear-gradient(to bottom,#055fb8,#095fb3);
+    box-shadow: inset 0 0 2px rgba(0,0,0,.12);
+}
+header .message-counts{
+	position: absolute;
+	top: 3px;
+	right: 1px;
+	padding: 2px 5px;
+	border-radius: 50%;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	background: rgb(190,15,48);	
+}
+header .message-box{
+	position: absolute;
+	top: 50px;
+	left: 50%;
+	display: none;
+	width: 320px;
+	height: 370px;
+	margin-left: -90px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	background-color: #fff;
+}
+header .message-box .tab-head{
+	position: fixed;
+	top: 48px;
+	width: 320px;
+	border-bottom: 1px solid rgb(238,238,238);
+}
+header .message-box .tab-head div{
+	display: inline-block;
+	width: 32%;
+	padding: 11px 0 5px 0;
+	border-right: 1px solid rgb(238,238,238);
+	text-align: center;
+	cursor: pointer;
+}
+header .message-box .tab-head div:last-child{
+	border: none;
+}
+
+header .message-box .tab-head span{
+	display: inline-block;
+	width: 22px;
+	height: 16px;
+}
+header .message-box .tab-content{
+	height: 306px;
+	margin-top: 34px;
+	overflow: auto;
+}
+header .message-box .tab-content .like-people{
+	padding: 7px 11px;
+	border-bottom:1px solid rgb(238,238,238);
+}
+header .message-box .tab-content .like-people div{
+	display: inline-block;
+	width: 80%;
+	position: relative;
+}
+header .like-people div a,header .like-people div span{
+	display: block;
+	line-height: 1.8em;
+}
+header .message-box .tab-content .like-people div .guanzhu{
+	position: absolute;
+	display: none;
+	top: 5px;
+	right: 10px;
+}
+header .message-box .tab-content .like-people div:hover .guanzhu{
+	display: block;
+}
+header .like-people div span{
+	font-size: 14px;
+}
+header .tab-content .like-people img{
+	width: 40px;
+	height: 40px;
+	margin-left: 10px;
+	border-radius: 4px;
+	vertical-align: top;
+}
+header .message-box .tab-content p{
+	padding: 7px 11px;
+	border-bottom: 1px solid rgb(238,238,238);
+	line-height: 1.6em;
+	font-size: 13px;
+}
+header .message-box .tab-foot{
+	position: fixed;
+	top: 385px;
+}
+header .message-box .tab-foot i{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin-left: 13px;
+	background: url(../images/sprites-zhihu.png) no-repeat -88px -148px;
+}
+header .nav .message-box .tab-foot a{
+	display: inline-block;
+	margin-left: 200px;
+	font-size: 13px;
+	color: #999;
+	vertical-align:5px;
+}
+header .message-box .tab-content a{
+	display: inline;
+	padding: 0;
+	line-height: normal;
+	font-size: 13px;
+	color: #259;
+}
+header .message-box .tab-content a:hover{
+	text-decoration: underline;
+}
+header .message-box .tab-head .message{
+	background: url(../images/sprites-zhihu.png) no-repeat -94px -66px;
+}
+header .message-box .tab-head .cur .message{
+	background-position: -94px -87px;
+}
+header .message-box .tab-head .people{
+	background: url(../images/sprites-zhihu.png) no-repeat -123px -65px;
+}
+header .message-box .tab-head .cur .people{
+	background-position: -123px -87px;
+}
+header .message-box .tab-head .like{
+	background: url(../images/sprites-zhihu.png) no-repeat -151px -65px;
+}
+header .message-box .tab-head .cur .like{
+	background-position: -151px -87px;
+}
+header .profile{
+	float: right;
+	position: relative;
+	line-height: 46px;
+}
+header .profile button{
+	position: absolute;
+	top: 9px;
+	left: -75px;
+	padding: 5px 17px;
+	border: 1px solid #045bb2;
+    border-radius: 4px;
+	color: #fff;
+	background: linear-gradient(to bottom,#0e7bef,#0d73da);
+    box-shadow: 0 1px 2px rgba(0,0,0,.05), inset 0 1px 1px rgba(255,255,255,.15);
+	outline: 0;
+	cursor: pointer;
+}
+header .user-name{
+	display: inline-block;
+	line-height: 46px;
+}
+header .user-name a{
+	color: #fff;	
+}
+header .user-name>a{
+	display: block;
+	padding: 0 18px;
+}
+header .user-name>a:hover{
+	background: rgb(7,95,181);
+    box-shadow: 0 1px 2px rgba(0,0,0,.05), inset 0 1px 1px rgba(255,255,255,.15);  
+}
+header .drop-menu{
+	display: none;
+	background: rgb(7,95,181);
+	border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05), inset 0 1px 1px rgba(255,255,255,.15);
+}
+header .drop-menu li{
+	padding-left: 20px;
+	border-top: 1px solid #0d5aa5;
+}
+header .drop-menu li:hover{
+	background: rgb(2,103,204);
+}
+header .drop-menu li a{
+	display: block;
+	margin-left: 7px;
+}
+header .drop-menu i{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin: 0 5px 0 -6px;
+	vertical-align: middle;
+}
+header .drop-menu i.my-index{
+	background: url(../images/sprites-zhihu.png) no-repeat -6px -7px;
+}
+header .drop-menu i.letter{
+	background: url(../images/sprites-zhihu.png) no-repeat -6px -34px;
+}
+header .drop-menu i.set{
+	background: url(../images/sprites-zhihu.png) no-repeat -6px -61px;
+}
+header .drop-menu i.quit{
+	background: url(../images/sprites-zhihu.png) no-repeat -6px -88px;
+}
+header .user-name:hover .drop-menu{
+	display: block;
+}
+header .profile img{
+	width: 26px;
+	height: 26px;
+	margin-right: 7px;
+	border-radius:4px;
+	vertical-align: middle;
+}
+header .profile a{
+	font-size: 14px;
+}
+
+/*主体区域部分样式*/
+.main{
+	width: 100%;
+	min-width: 960px;
+	margin-top: 25px;
+}
+.main .question-list{
+	float: left;
+	width: 632px;	
+}
+.main .operate-nav{
+	position: relative;
+	margin: 46px 0 30px 0;
+}
+.main .operate-nav img{
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	vertical-align: 5px;
+}
+.main .operate-nav ul{
+	display: inline-block;
+	margin-left: 15px;
+	border:1px solid #f0f0f0;
+	border-radius: 4px;
+	background:#fafafa;
+	overflow: hidden;
+}
+/*.operate-nav .traingle{
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-top: 10px solid #fafafa;
+	left: 48px;
+	top: 50%;
+	margin-top: -13px;
+}
+.operate-nav .traingle:after{
+	content: "";
+	width: 2px;
+	height: 10px;
+	background: rgb(250,250,250);
+	position: absolute;
+	top: 50%;
+	margin-top: -10px;
+	left: -1px;
+}*/
+.operate-nav ul li{
+	float: left;
+	position: relative; 
+	padding:0 32px 0 27px;
+}
+.operate-nav ul li:last-child{
+	margin-left: 117px; 
+	padding-right: 20px;
+}
+.operate-nav ul li a{
+	display: inline-block;
+	padding: 0 2px 0 2px;
+	color: #6c829f;
+	font-size: 0.875em;
+	line-height: 48px;
+}
+.operate-nav ul li i{
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	vertical-align: middle; 
+}
+.operate-nav ul li .ask{
+	background: url(../images/sprites.auto.png) no-repeat;
+	background-position: -150px -30px;
+}
+.operate-nav ul li .answer{
+	background: url(../images/sprites.auto.png) no-repeat;
+	background-position: -100px -30px;
+}
+.operate-nav ul li .write{
+	background: url(../images/sprites.auto.png) no-repeat;
+	background-position: -125px -55px;
+}
+.operate-nav ul li:hover a{
+	color: #259;
+}
+.operate-nav ul li:hover .ask{
+	background-position:-124px -30px;
+}
+.operate-nav ul li:hover .answer{
+	background-position: -100px -56px;
+}
+.operate-nav ul li:hover .write{
+	background-position: -177px -29px;
+}
+.operate-nav .m-item:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 1px;
+    height: 20px;
+    margin-top: -10px;
+    background: #f0f0f0;
+}
+.main .new-trend{
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+}
+.main .new-trend .left-span{
+	float: left;
+	color: #666;
+	font-size: 14px;
+	font-weight: 700;
+}
+.main .new-trend .left-span i{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin-right: 7px;
+	background: url(../images/sprites-zhihu.png) no-repeat -71px -88px;
+	vertical-align: middle;
+}
+.main .new-trend .right-a{
+	float: right;
+	color: #999;
+	font-size: 13px;
+	font-weight: 400;
+}
+.main .new-trend .right-a:hover{
+	text-decoration: underline;
+}
+.main .new-trend .right-a i{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background: url(../images/sprites-zhihu.png) no-repeat -88px -148px;
+	vertical-align: middle;
+	/*margin-right: 5px;*/
+}
+.main .trend-count{
+	margin: 12px 0 2px 0;
+	border:1px solid #c7dff0;
+	background:rgb(239,246,250);
+	border-radius: 4px;
+}
+.main .trend-count a{
+	display: block;
+	text-align: center;
+	color: #666;
+	font-size: 14px;
+	line-height: 2.3em;
+}
+.main .trend-count a:hover{
+	background-color: rgb(218,237,245);
+}
+.question-item{
+	position: relative;
+	padding-top: 10px;
+	border-bottom: 1px solid #eee;
+}
+.question-item .close{
+	position: absolute;
+	right: 0;
+	width: 20px;
+	height: 20px;
+	background: url(../images/sprites-zhihu.png) no-repeat;
+	background-position: -261px -62px;
+}
+.question-item .close:hover{
+	background-position: -261px -42px;
+}
+.question-item .title img{
+	float: left;
+	width: 38px;
+	height: 38px;
+	margin-right: 10px;
+	border-radius: 4px;
+}
+.question-item .zan-count{
+	position: absolute;
+	top: 53px;
+	width: 38px;
+	height: 24px;
+	color: rgb(105,142,191);
+	font-size: 13px;
+	line-height: 24px;
+	text-align: center;
+	background-color: rgb(239,246,250);
+	border-radius: 4px;
+	cursor: pointer;
+}
+.question-item .zan-count:hover{
+	background-color: rgb(105,142,191);
+	color: #fff;
+}
+.question-item .title .topic{
+	color: #999;
+	font-size: 13px;
+	line-height: 1.0em;
+	vertical-align: text-top;
+}
+.question-item .title .topic a{
+	padding-left: 5px;
+	color: #999;
+	font-size: 13px;
+}
+.question-item .title .topic a:hover{
+	color: #259;
+	text-decoration: underline;
+}
+.question-item .question-title{
+	vertical-align: text-top;
+	line-height: 0.7em;
+}
+.question-item .question-title a{
+	font-size: 14px;
+	color: #259;
+	font-weight: 700;
+}
+.question-item .question-title a:hover{
+	text-decoration: underline;
+}
+.solution .answer-name{
+	display: inline-block;
+	padding: 6px 0;
+	color: #222;
+	font-size: 13px;
+	font-weight: 700;
+}
+.solution{
+	margin-left: 48px;
+}
+.solution .answer-name:hover{
+	text-decoration: underline;
+}
+.solution .answer-name+span{
+	display: inline-block;
+	padding: 6px 0;
+	margin-left: 5px;
+	color: #999;
+	font-size: 13px;
+}
+.solution p{
+	font-size: 13px;
+	color: #222;
+	line-height: 1.7em;
+	overflow: hidden;
+}
+.solution p img{
+	float: left;
+	width: 200px;
+	height: 112px;
+	margin: 0 10px 5px 0;
+}
+.solution p a{
+	color: #259;
+	font-size: 0.9em;
+	line-height: 1.7em;
+}
+.solution p a:hover{
+	background: rgb(239,246,250);
+	text-decoration: underline;
+}
+.solution .handle{
+	line-height: 2.4em;
+}
+.solution .handle a{
+	margin-right: 8px;
+	font-size: 13px;
+	color: #999;
+}
+.solution .handle a:hover{
+	text-decoration: underline;
+	color: #259;
+}
+.solution .handle i{
+	display: inline-block;
+	width: 8px;
+	height: 9px;
+	margin-right: 5px;
+}
+.solution .handle .follow-question{
+	background: url(../images/sprites-zhihu.png) no-repeat -97px -23px;
+}
+.solution .handle .comment{
+	width: 9px;
+	height: 10px;
+	background: url(../images/sprites-zhihu.png) no-repeat -28px -37px;
+}
+
+.operation-list{
+	width: 270px;
+	float: right;
+}
+.operation-list img{
+	width: 270px;
+	height: 225px;
+	margin-top: 46px;
+	border-radius: 6px;
+}
+.operation-list ul{
+	margin-left: -10px;
+	margin-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #eee;
+}
+.operation-list ul a{
+	font-size: 13px;
+	color: #666;
+	line-height: 2.4em;
+	display: block;
+}
+.operation-list ul a:hover{
+	color: #259;
+	background-color: rgb(239,246,250);
+	border-radius: 4px;
+}
+.operation-list ul i{
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	vertical-align: -3px;
+	margin-right: 5px;
+	margin-left: 10px;
+}
+.operation-list ul .star{
+	background: url(../images/sprites-zhihu.png) no-repeat -167px -4px;
+}
+.operation-list ul .follow{
+	background: url(../images/sprites-zhihu.png) no-repeat -183px -4px;
+}
+.operation-list ul .invite{
+	background: url(../images/sprites-zhihu.png) no-repeat -200px -4px;
+}
+.operation-list ul .balance{
+	background: url(../images/balance.svg) no-repeat left center;
+}
+.operation-list ul .ticket{
+	background: url(../images/ticket.svg) no-repeat left center;
+}
+.operation-list ul a:hover .star{
+	background-position: -167px -24px;
+}
+.operation-list ul a:hover .follow{
+	background-position: -183px -24px;
+}
+.operation-list ul a:hover .invite{
+	background-position: -200px -24px;
+}
+.operation-list ul a:hover .balance{
+	background: url(../images/balance-blue.svg) no-repeat left center;
+}
+.operation-list ul a:hover .ticket{
+	background: url(../images/ticket-blue.svg) no-repeat left center;
+}
+.operation-list ul .public{
+	background: url(../images/sprites-zhihu.png) no-repeat -269px -4px;
+}
+.operation-list ul .community{
+	background: url(../images/community.png) no-repeat -24px -41px;
+}
+.operation-list ul .copyright{
+	background: url(../images/copyright.svg) no-repeat left center;
+}
+.operation-list ul a:hover .public{
+	background: url(../images/sprites-zhihu.png) no-repeat -269px -24px;
+}
+.operation-list ul a:hover .community{
+	background: url(../images/community.png) no-repeat -67px -39px;
+}
+.operation-list ul a:hover .copyright{
+	background: url(../images/copyright-blue.svg) no-repeat left center;
+}
+.operation-list ul i.large-icon{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	vertical-align: middle;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+.operation-list .product-list a{
+	line-height: 3.0em;
+}
+.product-list .skim-more{
+	float: right;
+	font-size: 12px;
+	color: #259;
+	font-weight: 400;
+	margin-top:-5px;
+}
+.product-list img{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	margin-top: 0;
+	vertical-align: middle;
+	padding: 0 10px;
+	border-radius: 4px;
+}
+.product-list .skim-more:hover{
+	text-decoration: underline;
+	background: none;
+}
+.operation-list ul h3{
+	font-weight: 700;
+	font-size: 14px;
+	margin-bottom: 10px;
+	padding-left: 12px;
+}
+.operation-list ul a .column{
+	background: url(../images/column.png) no-repeat;
+}
+.operation-list ul a .download-app{
+	background: url(../images/column.png) no-repeat 0 -27px;
+}
+.operation-list p{
+	line-height: 1.8em;
+	color: #999;
+	font-size: 13px;
+}
+.operation-list p a{
+	color: #999;
+	font-size: 13px;
+}
+.operation-list p a:hover{
+	text-decoration: underline;
+}
+.backTop{
+	position: fixed;
+	bottom: 150px;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	border-radius: 3px;
+	background-color: rgb(221,221,221);
+	cursor: pointer;
+}
+.backTop .square{
+	position: absolute;
+	left: 50%;
+	top:48%;
+	width: 8px;
+	height: 14px;
+	margin-left: -4px;
+	background-color: rgb(170,170,170);
+}
+.backTop .traingle{
+	position: absolute;
+	left: 50%;
+	top: 14px;
+	width: 0;
+	height: 0;
+	margin-left: -9px;
+	border-left: 9px solid transparent;
+	border-right: 9px solid transparent;
+	border-bottom: 9px solid rgb(170,170,170);
+}
+.backTop:hover{
+	background-color: rgba(221,221,221,.7);
+}
+
+/*@media screen and (max-width: 632px) {
+    .main .question-list{
+    	width: 100%
+    }
+}*/
