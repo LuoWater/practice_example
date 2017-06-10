@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+        	*{
+        		margin: 0;
+        		padding: 0;
+        	}
+        	#wrap{
+        		position: relative;
+        		width: 980px;
+        		margin: 50px auto;
+        		height: 210px;
+        		overflow: hidden;
+        	}
+        	ul{
+        		position: absolute;
+        		width: 6860px;
+        		overflow: hidden;
+        	}
+        	ul li{
+        		list-style: none;
+        		float: left;
+        	}
+        	ul li a{
+        		display: block;
+        	}
+        	.arrow{
+        		display: none;
+        		width: 50px;
+        		height: 30px;
+        		color: #fff;
+        		font-size: 30px;
+        		line-height: 30px;
+        		font-weight: 700;
+        		text-align: center;
+        		background-color: rgba(0,0,0,.2);
+        		cursor: pointer;
+        	}
+        	#prev{
+        		position: absolute;
+        		top: 50%;
+        		left: 0;
+        		margin-top: -15px;
+        	}
+        	#next{
+        		position: absolute;
+        		top: 50%;
+        		right: 0;
+        		margin-top: -15px;
+        	}
+        	#circle{
+        		position: absolute;
+        		bottom: 10px;
+        		width: 100%;
+        		text-align: center;
+        	}
+        	#circle span{
+				display: inline-block;
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				background-color: rgba(33,33,33,.3);
+				cursor: pointer;
+        	}
+        	#circle span.current{
+        		background-color: #fff;
+        	}
+        </style>
+    </head>
+    <body>
+    	<div id="wrap">
+    		<ul id="wrapImg" style="left: -980px;">
+    			<li><a href="#"><img src="images/img5.jpg" alt="该图片无法正常显示" title="5"></a></li>
+    			<li><a href="#"><img src="images/img1.png" alt="该图片无法正常显示" title="1"></a></li>
+    			<li><a href="#"><img src="images/img2.jpg" alt="该图片无法正常显示" title="2"></a></li>
+    			<li><a href="#"><img src="images/img3.png" alt="该图片无法正常显示" title="3"></a></li>
+    			<li><a href="#"><img src="images/img4.jpg" alt="该图片无法正常显示" title="4"></a></li>
+    			<li><a href="#"><img src="images/img5.jpg" alt="该图片无法正常显示" title="5"></a></li>
+    			<li><a href="#"><img src="images/img1.png" alt="该图片无法正常显示" title="1"></a></li>
+    		</ul>
+    		<span class="arrow" id="prev"><</span>
+    		<span class="arrow" id="next">></span>
+    		<div id="circle">
+    			<span class="current" index="0"></span>
+    			<span index="1"></span>
+    			<span index="2"></span>
+    			<span index="3"></span>
+    			<span index="4"></span>
+    		</div>
+    	</div>
+    </body>
+    <script type="text/javascript">
+    	window.onload=function() {
+    		var wrap=document.getElementById("wrap");
+    		var wrapImg=document.getElementById("wrapImg");
+    		var prev=document.getElementById("prev");
+    		var next=document.getElementById("next");
+    		var circle=document.getElementById("circle").getElementsByTagName("span");
+
+    		//声明var变量是为了与小圆点的序号对应
+    		var index=0;
+    		//存放动画状态，默认为false，表示不执行动画
+    		var animated=false;
+    		//声明超时调用变量
+    		var timer;
+
+    		//小圆点控制图片的切换
+    		for (var i = 0; i < circle.length; i++) {
+    			circle[i].onclick=function(){
+    				//获取点击按钮的index值
+    				var thisIndex=parseInt(this.getAttribute("index"));
+    				// 前一个动画结束时再执行下一个动画
+    				if (animated==false) {
+    					slide(-(thisIndex-index)*980);
+    				}
+    				//切换完之后将新得index值赋值给index
+    				index=thisIndex;
+    				//改变小圆点状态
+    				changeCircleStatus();
+    			}
+    		}
+
+    		//上一张切换按钮
+    		 prev.onclick=function(){
+    		 	//如果上一个动画还在执行，则退出函数
+    		 	if (animated) {
+                    return;
+                }
+    		 	slide(980);
+    		 	if (index==0) {
+    		 		index=4;
+    		 	}else{
+    		 		index-=1;
+    		 	}
+    		 	changeCircleStatus();
+    		 }
+
+    		 //下一张切换按钮
+    		 next.onclick=function(){
+    		 	if (animated) {
+                    return;
+                }
+    		 	slide(-980);
+    		 	if (index==4) {
+    		 		index=0;
+    		 	}else{
+    		 		index+=1;
+    		 	}
+				changeCircleStatus();
+    		 }
+
+    		 //滑动动画效果函数
+    		 function slide(offset){
+    		 	//如果点击当前页小圆点，则退出函数
+    		 	if (offset==0) {
+    		 		return;
+    		 	}
+    		 	//当执行slide函数时，动画开始，值为true
+    		 	animated=true;
+    		 	var newLeft=parseInt(wrapImg.style.left)+offset;
+                //切换一张图片持续的时间       
+    		 	var duration=280;
+    		 	//两次滑动效果的间隔时间
+    		 	var interval=10;
+    		 	//滑动速度
+    		 	var speed=offset/(duration/interval);
+    		 	//函数表达式的形式声明函数
+    		 	var go=function(){
+    		 		if ((speed > 0 && parseInt(wrapImg.style.left) < newLeft) || (speed < 0 && parseInt(wrapImg.style.left) > newLeft)) {
+    		 			wrapImg.style.left=parseInt(wrapImg.style.left)+speed+"px";
+    		 			//递归
+    		 			setTimeout(go,interval);
+    		 		}else{
+   						//当图片即将滚动到第一张图片的附属图时，马上切回到真正的第一张图
+    		 			if (parseInt(wrapImg.style.left)<-4900) {
+    		 				wrapImg.style.left=-980+"px";
+    		 			}
+    		 			//当图片即将滚动到第五张图片的附属图时，马上切回到真正的第五张图
+    		 			if (parseInt(wrapImg.style.left)>-980) {
+    		 				wrapImg.style.left=-4900+"px";
+    		 			}
+    		 			//执行到此处时，表示动画执行完成，改为false
+    		 			animated=false;
+    		 		}
+    		 	}
+    		 	go();
+    		 }
+
+    		 //改变小圆点样式
+    		 function changeCircleStatus(){
+    		 	//取消所有小圆点的样式
+    		 	for (var i = 0; i < circle.length; i++) {
+    		 		circle[i].className="";
+    		 	}
+    		 	//添加状态
+ 				circle[index].className="current";	
+    		 }
+
+    		 //自动播放函数
+    		 function autoPlay(){
+    		 	timer=setInterval(function(){
+    		 		next.onclick();
+    		 	},1500);
+    		 }
+
+    		 //停止播放函数
+    		 function stop(){
+    		 	clearInterval(timer);
+    		 }
+
+    		 wrap.onmouseover=function(){
+    		 	stop();
+    		 	prev.style.display="inline-block";
+    		 	next.style.display="inline-block";
+    		 }
+    		 wrap.onmouseout=function(){
+    		 	autoPlay();
+    		 	prev.style.display="none";
+    		 	next.style.display="none";
+    		 };
+
+    		 autoPlay(); 
+    	}
+    </script>
+</html>
