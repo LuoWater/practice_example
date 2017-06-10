@@ -2,7 +2,7 @@
 
 #### 1.知乎首页效果图（纯静态网页）
 
-![](//www.ipandao.com/editor.md/examples/php/../uploads/1.png) 
+![](./仿知乎首页/images/result/2.png) 
 
 ![](//www.ipandao.com/editor.md/examples/php/../uploads/2.png)
 
