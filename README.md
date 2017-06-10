@@ -2,9 +2,9 @@
 
 #### 1.知乎首页效果图（纯静态网页）
 
-![](./仿知乎首页/images/result/2.png) 
+![](./仿知乎首页/images/result/1.png) 
 
-![](//www.ipandao.com/editor.md/examples/php/../uploads/2.png)
+![](./仿知乎首页/images/result/2.png) 
 
 ==================================================
 
@@ -26,6 +26,5 @@ JQuery框架，JS模板
 
 使用原生HTML/CSS/JS实现无缝轮播的页面小组件
 
-![](//www.ipandao.com/editor.md/examples/php/../uploads/1.png)
 
 
