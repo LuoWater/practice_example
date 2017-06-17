@@ -1,10 +1,8 @@
 ### 仿写的网页
 
-#### 1.知乎首页效果图（纯静态网页）
+#### 1.知乎首页效果图
 
-![](./仿知乎首页/images/result/1.png) 
-
-![](./仿知乎首页/images/result/2.png) 
+页面展示链接：https://luowater.github.io/practice_example/zhihu/zhihu.html
 
 ==========================================================================================================================================
 
@@ -15,6 +13,7 @@
 2.删除商品功能： 可以点击相关的商品进行删除操作<br>
 3.点击结算可以进行支付功能<br>
 
+页面展示链接：https://luowater.github.io/practice_example/taobao-cart/cart.html
 ###### 使用技术
 JQuery框架，JS模板
 
@@ -26,5 +25,6 @@ JQuery框架，JS模板
 
 使用原生HTML/CSS/JS实现无缝轮播的页面小组件
 
+页面展示链接：https://luowater.github.io/practice_example/carousel/index.html
 
 
